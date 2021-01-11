@@ -4,7 +4,7 @@
 public class Radix extends MyLinkedList {
 
 public static int nth(int n, int col) {
-	return 0; //placeholder
+	return (int) (n / Math.pow(10, col - 1)) % 10;
 }
 
 public static int length(int n) {
