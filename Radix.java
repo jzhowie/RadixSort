@@ -1,4 +1,4 @@
-//TODO: Nth, merge, sort
+//TODO: sort
 //ISSUES:
 
 public class Radix extends MyLinkedList {
@@ -12,6 +12,8 @@ public static int length(int n) {
 }
 
 public static void merge(MyLinkedList original, MyLinkedList[] buckets) {
-
+	for (int i = 0; i < buckets.length; i++) {
+		original.extend(buckets[i]); //assumes you are able to clear out original before running
+	}
 }
 }
