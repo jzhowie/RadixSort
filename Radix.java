@@ -13,19 +13,26 @@ public static int length(int n) {
 
 public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
 	for (int i = 0; i < buckets.length; i++) {
-		original.extend(buckets[i]); //assumes you are able to clear out original before running
-	} // buckets will all be empty by design, but how do you clear the original
+		original.extend(buckets[i]);
+	}
 }
 
 public static void radixSortSimple(SortableLinkedList original) {
 	SortableLinkedList bucket[] = new SortableLinkedList[10];
-	for (int i = 0; i < original.size(); i++) {
-		System.out.println(nth(original.get(0), 0));
-		bucket[nth(original.get(0), 0)].add(original.get(0));
-		original.remove(0);
+	for (int i = 0; i < 10; i++) {
+		bucket[i] = new SortableLinkedList();
 	}
-	for (int i = 0; i <= 9; i++) {
-		System.out.println(bucket[i].toString());
+	int largestLength = 1;
+	int size = original.size();
+	for (int col = 0; col < largestLength; col++) {
+		for (int i = 0; i < size; i++) {
+			if (col == 0 && length(original.get(0)) > largestLength) {
+				largestLength = length(original.get(0));
+			}
+			bucket[nth(original.get(0), col)].add(original.get(0));
+			original.remove(0);
+		}
+		merge(original, bucket);
 	}
 }
 }
