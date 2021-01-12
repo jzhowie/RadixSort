@@ -58,7 +58,9 @@ public static void radixSort(SortableLinkedList data) {
 				data.remove(0);
 			}
 		}
-		radixSortSimple(bucket[10]);
+		if (col == 0) {
+			radixSortSimple(bucket[10]);
+		}
 		merge(data, bucket);
 	}
 }
