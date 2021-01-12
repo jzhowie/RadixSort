@@ -37,8 +37,8 @@ public static void radixSortSimple(SortableLinkedList data) {
 }
 
 public static void radixSort(SortableLinkedList data) {
-	SortableLinkedList bucket[] = new SortableLinkedList[10];
-	for (int i = 0; i < 10; i++) {
+	SortableLinkedList bucket[] = new SortableLinkedList[11];
+	for (int i = 0; i < 11; i++) {
 		bucket[i] = new SortableLinkedList();
 	}
 	int largestLength = 1;
@@ -49,15 +49,16 @@ public static void radixSort(SortableLinkedList data) {
 			if (col == 0 && length(data.get(0)) > largestLength) {
 				largestLength = length(data.get(0));
 			}
-			if (data.get(0) > 0) {
-				bucket[nth(data.get(0), col)].add(data.get(0));
+			if (data.get(0) < 0) {
+				bucket[9 - Math.abs(nth(data.get(0), col))].add(data.get(0));
 				data.remove(0);
 			}
 			else {
-				bucket[0].add(data.get(0));
+				bucket[10].add(data.get(0));
 				data.remove(0);
 			}
 		}
+		radixSortSimple(bucket[10]);
 		merge(data, bucket);
 	}
 }
