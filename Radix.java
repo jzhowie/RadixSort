@@ -4,7 +4,7 @@
 public class Radix extends SortableLinkedList {
 
 public static int nth(int n, int col) {
-	return (int) (n / Math.pow(10, col)) % 10;
+	return (int) (Math.abs(n) / Math.pow(10, col)) % 10;
 }
 
 public static int length(int n) {
@@ -50,7 +50,7 @@ public static void radixSort(SortableLinkedList data) {
 			}
 
 			if (data.get(0) < 0) {
-				bucket[9 - Math.abs(nth(data.get(0), col))].add(data.remove(0));
+				bucket[9 - nth(data.get(0), col)].add(data.remove(0));
 			}
 			else {
 				bucket[10].add(data.remove(0));
