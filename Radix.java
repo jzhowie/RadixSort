@@ -12,7 +12,7 @@ public static int length(int n) {
 }
 
 public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
-	for (int i = 0; i < buckets.length; i++) {
+	for (int i = 0; i < 10; i++) {
 		original.extend(buckets[i]);
 	}
 }
@@ -61,5 +61,6 @@ public static void radixSort(SortableLinkedList data) {
 		}
 		merge(data, bucket);
 	}
+	data.extend(bucket[10]);
 }
 }
