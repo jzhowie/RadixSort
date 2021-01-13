@@ -29,8 +29,7 @@ public static void radixSortSimple(SortableLinkedList data) {
 			if (col == 0 && length(data.get(0)) > largestLength) {
 				largestLength = length(data.get(0));
 			}
-			bucket[nth(data.get(0), col)].add(data.get(0));
-			data.remove(0);
+			bucket[nth(data.get(0), col)].add(data.remove(0));
 		}
 		merge(data, bucket);
 	}
@@ -49,13 +48,12 @@ public static void radixSort(SortableLinkedList data) {
 			if (col == 0 && length(data.get(0)) > largestLength) {
 				largestLength = length(data.get(0));
 			}
+
 			if (data.get(0) < 0) {
-				bucket[9 - Math.abs(nth(data.get(0), col))].add(data.get(0));
-				data.remove(0);
+				bucket[9 - Math.abs(nth(data.get(0), col))].add(data.remove(0));
 			}
 			else {
-				bucket[10].add(data.get(0));
-				data.remove(0);
+				bucket[10].add(data.remove(0));
 			}
 		}
 		if (col == 0) {
